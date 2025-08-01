@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Results - SEO Analyzer{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="card shadow p-4">
+      <h2 class="mb-4 text-center">SEO Analysis for: <br><small>{{ url }}</small></h2>
+      <p><strong>Total Words:</strong> {{ total_words }}</p>
+      <p><strong>Estimated Reading Time:</strong> {{ reading_time }} min</p>
+      <p><strong>Headers:</strong> H1: {{ h1 }} | H2: {{ h2 }} | H3: {{ h3 }}</p>
+      <hr>
+      <h5>Top 10 Keywords</h5>
+      <ul class="list-group">
+        {% for word, count in word_counts %}
+          <li class="list-group-item d-flex justify-content-between">
+            <span>{{ word }}</span> <span class="badge bg-primary rounded-pill">{{ count }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+      <a href="{{ url_for('index') }}" class="btn btn-secondary mt-4">Analyze Another</a>
+    </div>
+  </div>
+{% endblock %}
+

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Trending Searches - SEO Analyzer{% endblock %}
+
+{% block content %}
+  <h1>🔍 What People Are Searching for</h1>
+
+  <form method="POST" class="mb-4">
+    <div class="input-group">
+      <input type="text" name="keyword" class="form-control" placeholder="Enter a topic (e.g. AI, Python)" required>
+      <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+  </form>
+
+  {% if keyword %}
+    <h2>Top related searches for "{{ keyword }}":</h2>
+    {% if results %}
+      <ul class="list-group">
+        {% for item in results %}
+          <li class="list-group-item">{{ item.query }} <span class="badge bg-secondary float-end">Popularity: {{ item.value }}</span></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No trends found for "{{ keyword }}".</p>
+    {% endif %}
+  {% endif %}
+
+  <p class="mt-4"><a href="{{ url_for('index') }}">Back to Home</a></p>
+{% endblock %}

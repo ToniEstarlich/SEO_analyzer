@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - SEO Analyzer{% endblock %}
+
+{% block content %}
+<div class="card shadow p-4 mb-5">
+  <h1>Welcome to SEO Analyzer</h1>
+  <p>This app lets you analyze any website URL to see the top words used, heading counts, and estimated reading time.</p>
+  <p>To get started, go to the <a href="{{ url_for('analyzer.analyze') }}">Analyze Page</a> and enter the URL you want to analyze.</p>
+</div>
+
+<div class="row g-4">
+  <!-- Analyze Card -->
+  <div class="col-md-6">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">🔍 Analyze</h5>
+        <p class="card-text">
+          In the Analyze page, you can submit a website URL and receive a breakdown of:
+          <ul>
+            <li>Most frequent words on the page</li>
+            <li>Counts of headings (H1, H2, H3...)</li>
+            <li>Estimated reading time</li>
+          </ul>
+        </p>
+        <a href="{{ url_for('analyzer.analyze') }}" class="btn btn-primary">Try Analyze</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trending Card -->
+  <div class="col-md-6">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">📈 Trending</h5>
+        <p class="card-text">
+          The Trending page displays a list of the most recently analyzed websites.
+          <ul>
+            <li>See which sites others are analyzing</li>
+            <li>Explore trends in popular SEO analysis</li>
+            <li>Useful for inspiration and comparison</li>
+          </ul>
+        </p>
+        <a href="{{ url_for('trending.trending') }}" class="btn btn-success">View Trending</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
